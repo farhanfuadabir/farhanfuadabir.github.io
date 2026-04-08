@@ -7,7 +7,16 @@
 }
 
 body {
-  font-family: "Inter", "Space Grotesk", "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-family:
+    "Inter",
+    "Space Grotesk",
+    "IBM Plex Sans",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    sans-serif;
   letter-spacing: -0.01em;
   font-size: 1.05rem;
   line-height: 1.65;
@@ -27,7 +36,9 @@ a {
   color: var(--accent-color);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
-  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
 }
 
 a:hover,
@@ -91,7 +102,10 @@ button {
   color: var(--accent-color);
   font-weight: 600;
   letter-spacing: 0.01em;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .btn:hover,
