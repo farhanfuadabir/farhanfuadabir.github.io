@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'jekyll'
+gem 'sass-embedded'           # Dart Sass — required for @use "sass:color" module syntax
+gem 'jekyll-sass-converter', '~> 3.0'  # uses Dart Sass instead of sassc/LibSass
 
 # Core plugins that directly affect site building
 group :jekyll_plugins do
@@ -9,7 +11,7 @@ group :jekyll_plugins do
     gem 'jekyll-feed'
     gem 'jekyll-get-json'
     gem 'jekyll-imagemagick'
-    gem 'jekyll-jupyter-notebook'
+    # gem 'jekyll-jupyter-notebook'  # disabled: requires jupyter CLI
     gem 'jekyll-link-attributes'
     gem 'jekyll-minifier'
     gem 'jekyll-paginate-v2'
@@ -32,6 +34,7 @@ group :other_plugins do
     gem 'httparty'
     gem 'observer'       # used by jekyll-scholar
     gem 'ostruct'        # used by jekyll-twitter-plugin
+    gem 'activesupport', '~> 7.0'  # pin to avoid Ruby 3.2 incompatibility in 3.1.12
     # gem 'terser'         # used by jekyll-terser
     # gem 'unicode_utils' -- should be already installed by jekyll
     # gem 'webrick' -- should be already installed by jekyll

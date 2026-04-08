@@ -2,19 +2,19 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Farhan Fuad Abir # the website title (if blank, full name will be used instead)
 first_name: Farhan Fuad
 middle_name:
 last_name: Abir
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Email is the best way to reach me for collaborations or speaking requests.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  PhD student in computer engineering at UCF building trustworthy multimodal AI for ultrasound diagnostics and wearable health sensing.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+  Minimal site built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> + <a href="https://github.com/alshedivat/al-folio">al-folio</a>.
+keywords: farhan fuad abir, multimodal ai, ultrasound imaging, trustworthy ai, reinforcement learning, biosensing # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⌭ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: ✷ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://farhanfuadabir.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -30,7 +30,7 @@ back_to_top: true # set to false to disable the back to top button
 repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
-  enabled: true
+  enabled: false
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
   theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
@@ -54,7 +54,7 @@ posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 880px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -187,6 +187,8 @@ exclude:
   - package.json
   - package-lock.json
   - _pages/about_einstein.md
+  - _posts/2023-07-04-jupyter-notebook.md
+  - assets/jupyter/
   - purgecss.config.js
   - README.md
   - readme_preview/
@@ -202,7 +204,7 @@ plugins:
   - jekyll-feed
   - jekyll-get-json
   - jekyll-imagemagick
-  - jekyll-jupyter-notebook
+  # - jekyll-jupyter-notebook  # disabled: requires jupyter CLI
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
