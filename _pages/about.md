@@ -3,16 +3,16 @@ layout: about
 title: about
 nav: false
 permalink: /
-subtitle: Orlando, FL.
+subtitle: Ph.D. Researcher · Computer Engineering · University of Central Florida
 
 profile:
   align: right
   image: pro_pic.jpg
   image_circular: false # crops the image to make it circular
-  # more_info: >
-  #   <p>farhan.fuad@ucf.edu</p>
-  #   <p>CREOL · UCF Main Campus</p>
-  #   <p>Orlando, FL</p>
+  more_info: >
+    <p>farhan.fuad@ucf.edu</p>
+    <p>CREOL · UCF Main Campus</p>
+    <p>Orlando, FL 32816</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -28,13 +28,14 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Farhan Fuad Abir is a Ph.D. researcher in biomedical AI at the University of Central Florida. His research focuses on medical imaging, multimodal learning, and foundation models, with an emphasis on ultrasound-based diagnosis. His long-term goal is to develop clinically reliable and explainable AI systems that translate into real-world healthcare applications. 
+Farhan Fuad Abir is a Ph.D. researcher in Computer Engineering at the University of Central Florida, advised by Dr. Laura Brattain (CREOL). His research sits at the intersection of medical imaging, multimodal learning, and generative AI, with a focus on ultrasound-based diagnosis and clinically reliable explainable AI systems.
 
-Earlier, Farhan completed an M.S. at UCF advised by Dr. Rickard Ewetz where he explored neuro-symbolic distillation of reinforcement learning agents. Prior to graduate school he engineered wearable and embedded health systems in Bangladesh and at Qatar University, experiences that continue to inform his research questions and design choices.
+Current research directions:
 
-Current focus areas:
+- **Multimodal ultrasound diagnostics** — fusing B-mode imagery with structured clinical data; CAM- and Grad-CAM++-based saliency for radiologist trust.
+- **Generative augmentation** — hybrid diffusion pipelines for synthesizing high-fidelity ultrasound images to address class imbalance in rare-condition datasets.
+- **Landmark detection** — YOLOv11-based neck-landmark localization with class-aware sampling for ultrasound-guided procedures.
 
-- Multimodal ultrasound diagnostics with interpretable attention and CAM-based explanations.
-- Diffusion-driven generative augmentation pipelines for rare conditions and class imbalance.
+Before the Ph.D., Farhan completed an M.S. at UCF (advised by Dr. Rickard Ewetz) on neuro-symbolic distillation of RL agents. Prior to graduate school he developed wearable and embedded health systems at Qatar University and in industry in Bangladesh — experiences that continue to shape his research questions and design choices.
 
-Outside the lab, Farhan helps lead the Bangladeshi Student Association at UCF and mentored undergraduate researchers on medical AI projects. He’s always excited to collaborate on projects that make intelligent health technologies more equitable and trustworthy—feel free to reach out.
+Outside the lab, he serves as President of the Bangladeshi Student Association at UCF and mentors undergraduate researchers on medical AI projects. He is always open to collaborating on work that makes intelligent health technologies more equitable and trustworthy — feel free to reach out.
