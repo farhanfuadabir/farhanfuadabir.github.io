@@ -1,97 +1,203 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+    - name: Name
+      value: Farhan Fuad Abir
+    - name: Email
+      value: <a href="mailto:farhan.fuad@ucf.edu">farhan.fuad@ucf.edu</a>
+    - name: Phone
+      value: (+1) 689-270-1830
+    - name: Location
+      value: Orlando, Florida, USA
+    - name: GitHub
+      value: <a href="https://github.com/farhanfuadabir" target="_blank">farhanfuadabir</a>
+    - name: LinkedIn
+      value: <a href="https://www.linkedin.com/in/farhanfuadabir" target="_blank">/in/farhanfuadabir</a>
+
+- title: Research Interests
+  type: nested_list
+  contents:
+    - title: Trustworthy multimodal AI
+      items:
+        - Ultrasound and clinical data fusion for disease diagnosis.
+        - Explainable AI for safety-critical decision support.
+    - title: Generative & diffusion modeling
+      items:
+        - Data-efficient augmentation for class-imbalanced medical imaging.
+    - title: Neurosymbolic reinforcement learning
+      items:
+        - Interpretable policy distillation and safety analysis.
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Ph.D. in Computer Engineering
+      institution: University of Central Florida, Orlando, FL
+      year: 2024 - Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - Graduate Research Assistant with Dr. Laura Brattain (CREOL/UCF).
+        - Working on multimodal ultrasound-based disease diagnosis and trustworthy explainable AI.
+        - Exploring generative AI approaches to rebalance highly skewed clinical datasets.
+    - title: M.S. in Computer Engineering (CGPA 3.89/4.00)
+      institution: University of Central Florida, Orlando, FL
+      year: 2022 - 2024
       description:
-        - Description 1.
-        - Description 2.
+        - Supervisor Dr. Rickard Ewetz.
+        - Thesis "Neuro-Symbolic Distillation of Reinforcement Learning Agents".
+        - Developed LLM-assisted feature extraction for visual observation space.
+        - Proposed neural-guided symbolic model extraction for continuous observation space.
+    - title: B.S. in Electrical & Electronic Engineering (CGPA 3.55/4.00)
+      institution: University of Dhaka, Bangladesh
+      year: 2016 - 2020
+      description:
+        - Supervisor Dr. Mosabber Uddin Ahmed.
+        - Project "Sensor-Based Sign Language Detection using Machine Learning".
+        - Built low-cost dataglove and datasets for static/dynamic ASL gestures using flex + IMU sensors.
 
-- title: Experience
+- title: Research & Industry Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Graduate Research Assistant
+      institution: University of Central Florida — Dr. Laura Brattain
+      year: Aug 2024 - Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Designed multimodal deep learning models for ultrasound-based breast cancer and pleural effusion diagnosis that fuse imagery with structured clinical data.
+        - Implemented CAM-based explainability and uncertainty cues for radiologist validation.
+        - Built hybrid diffusion pipelines for high-fidelity breast ultrasound generation to mitigate class imbalance.
+        - Led YOLOv11-based neck-landmark detection with class-aware sampling for ultrasound guidance.
+    - title: Graduate Research Assistant
+      institution: University of Central Florida — Dr. Rickard Ewetz
+      year: Oct 2022 - Aug 2024
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+        - Explored neurosymbolic approaches for interpretable reinforcement learning agents.
+        - Created LLM-assisted neuro-symbolic feature extraction tooling and mentored two undergraduate researchers.
+    - title: Research Assistant
+      institution: Qatar University Machine Learning Group
+      year: Aug 2021 - Aug 2022
       description:
+        - Developed smartwatch-driven biomarkers for presymptomatic COVID-19 detection.
+        - Evaluated deep anomaly detection models for long-horizon physiological monitoring.
+    - title: Biomedical Engineer
+      institution: Datasoft Manufacturing & Assembly Inc.
+      year: Jul 2021 - Sep 2021
+      description:
+        - Built IoT-enabled vital monitoring devices (HR, BP, SpO2, temperature) for the Virtual Doctor telemedicine platform.
+        - Integrated sensors into the backend for real-time monitoring and led a team of six interns.
+    - title: Embedded System Engineer
+      institution: Quanfield Technologies
+      year: Jun 2016 - Jan 2018
+      description:
+        - Engineered timing and scoring systems for archery competitions (ArcherClock) using custom PCBs and Raspberry Pi gateways.
+        - Designed QuizzoBuzz, a multi-terminal AVR-based buzzer system for live quizzes.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
+- title: Selected Publications
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - <strong>PCovNet+</strong> — CNN-VAE anomaly detection framework with LSTM embeddings for smartwatch-based COVID-19 detection, <em>Engineering Applications of Artificial Intelligence</em>, 2023.
+    - <strong>NABNet</strong> — Nested attention-guided BiConvLSTM for blood pressure prediction from PPG + ECG waveforms, <em>Biomedical Signal Processing and Control</em>, 2022.
+    - <strong>PCovNet</strong> — Wearable-enabled presymptomatic COVID-19 detection using deep learning, <em>Computers in Biology and Medicine</em>, 2022.
+    - <strong>Low-cost ASL Dataglove</strong> — Domain transformation + deep learning for hand gesture recognition, <em>Scientific Reports</em>, 2022.
+    - See the <a href="/publications/" target="_blank">publications page</a> for the complete list (8 journal papers, 4 conference papers, 1 book chapter).
+
+- title: Conference Activity & Invited Talks
+  type: time_table
+  contents:
+    - title: IEEE-EMBS Body Sensor Networks (BSN'25)
+      year: Nov 2025
+      description:
+        - Presented "Multimodal Deep Learning for Phyllodes Tumor Classification from Ultrasound and Clinical Data."
+    - title: IEEE CS BDS Winter Symposium (virtual)
+      year: Nov 2020
+      description:
+        - Talk on locomotion and transportation mode recognition with smart feature-based ML.
+    - title: PCB Design 101 (invited workshop)
+      institution: IEEE RAS / local maker communities
+      year: Aug 2020
+      description:
+        - Designed a 10-day online course covering schematic capture and PCB layout in Proteus, teaching 30 participants through live sessions.
+    - title: Discussion on Preliminary Ideas of Machine Learning
+      institution: IEEE Student Branch, University of Dhaka
+      year: Sep 2019
+      description:
+        - Guest lecture on ML-powered hand-gesture recognition for ~45 sophomore students.
+    - title: Introduction to Automation
+      institution: IEEE Robotics & Automation Society, DU
+      year: Jul 2018
+      description:
+        - Led an introductory workshop on embedded modules for automation for first-year cohorts.
+
+- title: Standardized Tests
+  type: list
+  contents:
+    - GRE — 320 (Quant 164, Verbal 156, AWA 4.0), Oct 2020.
+    - IELTS — 7.5 (Listening 8.5, Reading 7.5, Writing 6.5, Speaking 7), Oct 2021.
+
+- title: Skills
+  type: nested_list
+  contents:
+    - title: Languages & Frameworks
+      items:
+        - C/C++, Python (PyTorch, TensorFlow, Keras, SciKit Learn), MATLAB.
+    - title: Web & Tooling
+      items:
+        - HTML/CSS, Bootstrap, Django, LTSpice, Git, Docker.
+    - title: Hardware & Prototyping
+      items:
+        - Circuit simulation, custom PCB design (Proteus, Eagle), PCB fabrication, embedded systems.
+
+- title: Additional Projects
+  type: time_table
+  contents:
+    - title: ASL Dataglove
+      year: 2021
+      description:
+        - Sensor-based dataglove capable of interpreting 40 ASL gestures in real-time through ML.
+    - title: Tothastu
+      year: 2021
+      description:
+        - Minimalist blog platform crafted with Django for long-form writing.
+    - title: BioAI
+      year: 2020
+      description:
+        - BERT-based medical assistant for triaging health-related FAQs.
+    - title: Pet Robot
+      year: 2018
+      description:
+        - Companion robot that uses color-tracking to follow designated tags.
+    - title: Line Follower Robot
+      year: 2016
+      description:
+        - Embedded control system for robust line following under variable lighting and slopes.
+
+- title: Honors & Awards
+  type: time_table
+  contents:
+    - year: 2022
+      items:
+        - ORCGS Doctoral Fellowship, University of Central Florida, USA.
+    - year: 2021
+      items:
+        - Best Paper, Int’l Conference on Informatics, Electronics & Vision (ICIEV), Japan.
+    - year: 2021
+      items:
+        - Champion, Satellite Expedition Idea Contest, BRAC University, Bangladesh.
+    - year: 2020
+      items:
+        - Runner-up, Idea Contest (1st National Workshop on BDML, Bangladesh).
+        - 6th Position, Sussex-Huawei Locomotion Challenge, Cancún, Mexico.
+    - year: 2019
+      items:
+        - Finalist, APSCO Micro-satellite Idea Contest, Xi’an, China.
+        - Runner-up, Matlab Contest, Islamic University of Technology, Bangladesh.
+        - Runner-up, Project Showcasing, FabLab DU, Bangladesh.
+    - year: 2018
+      items:
+        - Champion, Line Follower Robot Competition, DUET, Bangladesh.
+
+- title: Leadership & Service
+  type: list
+  contents:
+    - President, Bangladeshi Student Association at UCF (2025 – Present).
+    - Secretary & Treasurer, IEEE Student Branch, University of Dhaka (2019 – 2021).
+    - Volunteer, FabLab University of Dhaka (2018).
+    - Volunteer, CommunityAction (UN-recognized social welfare org., 2016 – 2017).
