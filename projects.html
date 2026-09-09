@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#3B3B39" />
+<title>Projects · Farhan Fuad Abir</title>
+<meta name="author" content="Farhan Fuad Abir" />
+<meta name="description" content="Research and hardware projects by Farhan Fuad Abir: multimodal ultrasound diagnostics, neuro-symbolic RL distillation, wearable COVID-19 detection, and an ASL dataglove." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Projects · Farhan Fuad Abir" />
+<meta property="og:url" content="https://farhanfuadabir.github.io/projects.html" />
+<link rel="canonical" href="https://farhanfuadabir.github.io/projects.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Red+Hat+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a class="name" href="index.html">← Farhan Fuad Abir</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="publications.html">Publications</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="cv.html">CV</a>
+      <a href="offline.html">Offline</a>
+    </nav>
+  </div>
+
+  <header class="intro page">
+    <div class="eyebrow fade">Projects</div>
+    <h1 class="fade d1">Things I have built</h1>
+    <p class="say wide fade d2">The research threads I am pulling on right now, and the hardware and side projects that got me here. Most of the older ones are on <a href="https://github.com/farhanfuadabir" target="_blank" rel="noopener">GitHub</a>.</p>
+  </header>
+
+  <!-- RESEARCH -->
+  <section>
+    <p class="label">Research</p>
+
+    <div class="proj lead">
+      <h3>Multimodal Ultrasound Intelligence</h3>
+      <span class="tag">Current · PhD</span>
+      <p>A pipeline that pairs B-mode ultrasound with a small set of clinical features to help radiologists work through Phyllodes tumors and pleural effusions. Two things make it hard: the tumors are rare, so labels are thin, and a confident wrong answer is worse than no answer.</p>
+      <ul>
+        <li><b>Feature-level fusion.</b> Dual-branch encoders learn from ultrasound sweeps and structured vitals separately, then cross-attention finds where the two agree.</li>
+        <li><b>A trust layer.</b> CAM and Grad-CAM++ saliency overlays tuned for sonographers, so a clinician can see which region drove the call.</li>
+        <li><b>Realistic data.</b> A diffusion module synthesizes B-mode variants for the minority classes, which eases the imbalance without teaching the model to memorize.</li>
+      </ul>
+      <p>The whole thing runs in a Gradio review studio where physicians can scrub frames, toggle saliency, and audit the clinical context behind each prediction.</p>
+      <div class="plinks"><a href="https://arxiv.org/abs/2509.00213" target="_blank" rel="noopener">BSN 2025 paper</a><a href="https://arxiv.org/abs/2603.26834" target="_blank" rel="noopener">ISBI 2026 paper</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>Ultrasound Landmark Detection</h3>
+      <span class="tag">Current · PhD</span>
+      <p>YOLOv11-based neck landmark localization with class-aware sampling, meant to guide ultrasound-driven procedures. The sampling matters more than the architecture here, since the interesting landmarks are the ones that show up least often.</p>
+      <p>The same thread led to real-time median nerve and vessel tracking that runs on resource-constrained devices, led by Mahad Ali and presented at EMBC 2026.</p>
+      <div class="plinks"><a href="https://cmsworkshops.com/EMBC2026/view_paper.php?PaperNum=3856&amp;SessionID=1035" target="_blank" rel="noopener">EMBC 2026 paper</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>Neuro-Symbolic RL Distillation</h3>
+      <span class="tag">M.S. thesis</span>
+      <p>My master's work on pulling editable symbolic policies out of black-box reinforcement learning agents, advised by Dr. Rickard Ewetz.</p>
+      <ul>
+        <li><b>LLM-assisted feature carving.</b> Prompting language models with environment specs and replay buffers to derive compact feature dictionaries for visual and continuous observation spaces.</li>
+        <li><b>Neural-guided extraction.</b> A teacher policy supervises a differentiable decision list constrained by temporal logic templates. Gradients and SAT-based pruning together keep the rules short enough for a human to read.</li>
+        <li><b>Editable safety envelopes.</b> Because the output is made of understandable predicates, a domain expert can patch a behavior without retraining anything.</li>
+      </ul>
+      <p>It tracks high-performing agents on MuJoCo and gridworld tasks while showing what the policy actually attends to, which is the part I care about for safety-critical autonomy.</p>
+    </div>
+
+    <div class="proj">
+      <h3>PCovNet and PCovNet+</h3>
+      <span class="tag">Qatar University</span>
+      <p>A CNN-VAE framework with LSTM embeddings that detects the earliest physiological signs of COVID-19 from commodity smartwatches.</p>
+      <ul>
+        <li>Learns a per-user baseline from raw PPG, accelerometer, and heart-rate traces, so it does not need a population average to compare against.</li>
+        <li>Hybrid reconstruction and prediction losses catch both slow drift and sudden spikes.</li>
+        <li>LSTM embeddings hold onto circadian rhythm, which cuts false alarms when someone changes their schedule or starts working out.</li>
+        <li>Light enough to run on a mobile gateway with federated fine-tuning.</li>
+      </ul>
+      <p>In longitudinal trials it flagged presymptomatic cases up to 36 hours before PCR confirmation.</p>
+      <div class="plinks"><a href="https://doi.org/10.1016/j.engappai.2023.106130" target="_blank" rel="noopener">PCovNet+ (EAAI)</a><a href="https://doi.org/10.1016/j.compbiomed.2022.105682" target="_blank" rel="noopener">PCovNet (CBM)</a></div>
+    </div>
+  </section>
+
+  <!-- HARDWARE -->
+  <section>
+    <p class="label">Hardware and open source</p>
+
+    <div class="proj lead">
+      <h3>ASL-DataGlove</h3>
+      <span class="tag">Embedded ML · Wearables</span>
+      <p>A low-cost glove that reads American Sign Language gestures in real time. It began as my undergrad capstone and now does duty at outreach demos.</p>
+      <ul>
+        <li><b>Custom hardware.</b> A light, fabric-friendly glove with a flex sensor per finger, a 9-DOF IMU, and haptics for two-way cues. The board can be fabricated locally for under $35.</li>
+        <li><b>Datasets.</b> Two datasets covering 14 static and 3 dynamic gestures from 35 participants, capturing the between-person variation that most public sets flatten out.</li>
+        <li><b>Modeling.</b> A time-frequency embedding plus CNN pipeline, and a CNN-LSTM hybrid that runs on-device through TensorFlow Lite.</li>
+      </ul>
+      <p>It recognizes gestures in under 40 ms at better than 92% accuracy, and it is open source for community labs. The work became our Scientific Reports paper and won Best Paper at ICIEV 2021.</p>
+      <div class="plinks"><a href="https://github.com/farhanfuadabir/ASL-DataGlove" target="_blank" rel="noopener">GitHub</a><a href="https://doi.org/10.1038/s41598-022-25108-2" target="_blank" rel="noopener">Sci. Rep. paper</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>SHL-2020</h3>
+      <span class="tag">Time-series · Activity recognition</span>
+      <p>My entry for the Sussex-Huawei Locomotion Challenge 2020, recognizing how someone is travelling from wearable sensor streams. It placed 6th, and the feature engineering behind it turned into two UbiComp papers.</p>
+      <div class="plinks"><a href="https://github.com/farhanfuadabir/SHL-2020" target="_blank" rel="noopener">GitHub</a><a href="https://doi.org/10.1145/3410530.3414343" target="_blank" rel="noopener">UPIC paper</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>QuizzoBuzz</h3>
+      <span class="tag">Hardware · Embedded</span>
+      <p>A multi-terminal AVR buzzer system for live quiz competitions, built on custom PCBs. Someone had to settle who pressed first.</p>
+      <div class="plinks"><a href="https://github.com/farhanfuadabir/QuizzoBuzz" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>ArcherClock</h3>
+      <span class="tag">Hardware · Embedded</span>
+      <p>Timing and scoring hardware for archery competitions, using custom boards and Raspberry Pi gateways. Built during my embedded systems years at Quanfield Technologies.</p>
+      <div class="plinks"><a href="https://github.com/farhanfuadabir/ArcherClock" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>Virtual Doctor vitals</h3>
+      <span class="tag">IoT · Telemedicine</span>
+      <p>IoT vital monitoring devices measuring heart rate, blood pressure, SpO2, and temperature, wired into a telemedicine backend for real-time monitoring. I led a team of six interns on the integration at Datasoft.</p>
+    </div>
+  </section>
+
+  <!-- EARLIER -->
+  <section>
+    <p class="label">Earlier and smaller</p>
+    <div class="rows">
+      <div class="r">
+        <div class="rk">2021</div>
+        <div class="rv"><b>Tothastu</b><span class="note">A minimalist Django blog platform, built for long-form writing.</span></div>
+      </div>
+      <div class="r">
+        <div class="rk">2020</div>
+        <div class="rv"><b>BioAI</b><span class="note">A BERT-based assistant that triages health-related questions.</span></div>
+      </div>
+      <div class="r">
+        <div class="rk">2018</div>
+        <div class="rv"><b>Pet Robot</b><span class="note">A companion robot that follows a colored tag around the room.</span></div>
+      </div>
+      <div class="r">
+        <div class="rk">2016</div>
+        <div class="rv"><b>Line Follower Robot</b><span class="note">Embedded control that stays on the line through bad lighting and slopes. It won at DUET in 2018. <a href="https://github.com/farhanfuadabir/Line-Follower-Robot" target="_blank" rel="noopener">GitHub</a></span></div>
+      </div>
+    </div>
+    <p class="coauth">Odds and ends live on <a href="https://github.com/farhanfuadabir" target="_blank" rel="noopener">GitHub</a>.</p>
+  </section>
+
+  <footer>
+    <span><a href="index.html">← Home</a></span>
+    <span>© 2026 Farhan Fuad Abir</span>
+  </footer>
+
+</div>
+</body>
+</html>

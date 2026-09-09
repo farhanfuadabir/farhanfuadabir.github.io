@@ -1,0 +1,784 @@
+:root {
+  --paper: #3B3B39;
+  --raise: #454543;
+  --ink: #F4F1EA;
+  --ink-2: #DDD9CF;
+  --sub: #A9A59A;
+  --faint: #55554F;
+  --faint-2: #62625A;
+  --accent: #E2A93B;
+  /* ochre, the one accent */
+  --accent-2: #F0C069;
+  --wash: rgba(226, 169, 59, .14);
+  --measure: 660px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: "Karla", system-ui, sans-serif;
+  font-size: 17.5px;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--wash);
+  color: var(--ink);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.mono {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+}
+
+.serif {
+  font-family: "Spectral", Georgia, serif;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 26px;
+}
+
+/* ---- top bar ---- */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 0 0;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  letter-spacing: .02em;
+  color: var(--sub);
+}
+
+.top .name {
+  color: var(--ink);
+}
+
+a.name {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+
+a.name:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.top .avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width:560px) {
+  .top .avail span.t {
+    display: none;
+  }
+}
+
+.topnav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.topnav a {
+  color: var(--sub);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+
+.topnav a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.topnav a[aria-current="page"] {
+  color: var(--ink);
+}
+
+/* ---- intro ---- */
+.intro {
+  padding: 54px 0 10px;
+}
+
+.portrait {
+  width: 144px;
+  height: 144px;
+  margin: 0 0 28px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--faint);
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 44% 44%;
+  transform: scale(1.55);
+  transform-origin: 51% 44%;
+}
+
+.eyebrow {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .6;
+}
+
+h1 {
+  font-family: "Spectral", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(40px, 7vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.intro.page h1 {
+  font-size: clamp(34px, 5.4vw, 50px);
+  margin-bottom: 18px;
+}
+
+.say {
+  font-size: clamp(19px, 2.4vw, 22px);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 34ch;
+  margin: 0 0 30px;
+}
+
+.say.wide {
+  max-width: 46ch;
+  font-size: clamp(17.5px, 2vw, 19.5px);
+}
+
+.say em {
+  font-family: "Spectral", Georgia, serif;
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.quicklinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.quicklinks a {
+  color: var(--sub);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+
+.quicklinks a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- sections ---- */
+section {
+  padding: 52px 0;
+  border-top: 1px solid var(--faint);
+}
+
+section:first-of-type {
+  border-top: none;
+}
+
+.label {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin: 0 0 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+  background: var(--accent);
+  flex: none;
+}
+
+.prose p {
+  margin: 0 0 20px;
+  max-width: 64ch;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose a {
+  border-bottom: 1px solid var(--wash);
+  font-weight: 600;
+}
+
+.prose a:hover {
+  border-color: var(--accent);
+}
+
+.through {
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+}
+
+.through .row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--faint);
+}
+
+.through .row:first-child {
+  border-top: none;
+}
+
+.through .rk {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--accent);
+  letter-spacing: .02em;
+  padding-top: 2px;
+  font-weight: 600;
+}
+
+.through .rd {
+  color: var(--ink-2);
+  font-size: 16.5px;
+}
+
+.through .rd b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width:560px) {
+  .through .row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ---- now ---- */
+.now p {
+  max-width: 64ch;
+  margin: 0 0 24px;
+}
+
+.currently {
+  display: grid;
+  gap: 0;
+}
+
+.currently .ci {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 13px 0;
+  border-top: 1px solid var(--faint);
+  align-items: baseline;
+}
+
+.currently .ci:first-child {
+  border-top: none;
+}
+
+.currently .ck {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+
+.currently .cv {
+  color: var(--ink);
+}
+
+@media (max-width:560px) {
+  .currently .ci {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+/* ---- updates ---- */
+.updates {
+  display: grid;
+  gap: 0;
+}
+
+.update {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 22px;
+  padding: 17px 0;
+  border-top: 1px solid var(--faint);
+}
+
+.update:first-child {
+  border-top: none;
+}
+
+.update .ud {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: .04em;
+  padding-top: 3px;
+  white-space: nowrap;
+}
+
+.update .ub {
+  color: var(--ink-2);
+  font-size: 16.5px;
+}
+
+.update .ub b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.update .ub a {
+  font-weight: 600;
+  border-bottom: 1px solid var(--wash);
+}
+
+.update .ub a:hover {
+  border-color: var(--accent);
+}
+
+.update.pin .ud {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width:560px) {
+  .update {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ---- publications ---- */
+.pub {
+  padding: 20px 0;
+  border-top: 1px solid var(--faint);
+}
+
+.pub:first-child {
+  border-top: none;
+}
+
+.pub .pmeta {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  color: var(--sub);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 9px;
+  flex-wrap: wrap;
+}
+
+.pub .pmeta .venue {
+  color: var(--ink-2);
+}
+
+.pub .pmeta .first {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.pub .pmeta .first::before {
+  content: "◆ ";
+  font-size: 9px;
+  vertical-align: 1px;
+}
+
+.pub h3 {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.32;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.pub .auth {
+  font-size: 14.5px;
+  color: var(--sub);
+  margin: 0 0 11px;
+}
+
+.pub .auth .me {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.pub .plinks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+}
+
+.pub .plinks a {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  font-weight: 600;
+}
+
+.pub .plinks a:hover {
+  border-color: var(--accent);
+}
+
+.coauth {
+  font-size: 15px;
+  color: var(--sub);
+  margin: 22px 0 0;
+  max-width: 64ch;
+}
+
+.coauth a {
+  border-bottom: 1px solid var(--wash);
+  font-weight: 600;
+}
+
+/* ---- projects ---- */
+.proj {
+  padding: 20px 0;
+  border-top: 1px solid var(--faint);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 24px;
+  align-items: baseline;
+}
+
+.proj:first-child {
+  border-top: none;
+}
+
+.proj h3 {
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+  margin: 0;
+}
+
+.proj .tag {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--sub);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.proj p {
+  grid-column: 1 / -1;
+  margin: 2px 0 0;
+  color: var(--ink-2);
+  font-size: 16px;
+  max-width: 60ch;
+}
+
+.proj ul {
+  grid-column: 1 / -1;
+  margin: 10px 0 0;
+  padding: 0 0 0 18px;
+  color: var(--ink-2);
+  font-size: 16px;
+  max-width: 62ch;
+}
+
+.proj ul li {
+  margin: 0 0 7px;
+  padding-left: 2px;
+}
+
+.proj ul li::marker {
+  color: var(--accent);
+}
+
+.proj ul li b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.proj .plinks {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+}
+
+.proj .plinks a {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  font-weight: 600;
+}
+
+.proj .plinks a:hover {
+  border-color: var(--accent);
+}
+
+.proj.lead {
+  padding-top: 0;
+}
+
+@media (max-width:560px) {
+  .proj {
+    grid-template-columns: 1fr;
+  }
+
+  .proj .tag {
+    text-align: left;
+  }
+}
+
+/* ---- simple two-column rows (awards, service, small projects) ---- */
+.rows {
+  display: grid;
+  gap: 0;
+}
+
+.rows .r {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 22px;
+  padding: 14px 0;
+  border-top: 1px solid var(--faint);
+  align-items: baseline;
+}
+
+.rows .r:first-child {
+  border-top: none;
+}
+
+.rows .rk {
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.rows .rv {
+  color: var(--ink-2);
+  font-size: 16.5px;
+}
+
+.rows .rv b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.rows .rv .note {
+  color: var(--sub);
+  font-size: 15px;
+  display: block;
+  margin-top: 2px;
+}
+
+.rows.wide .r {
+  grid-template-columns: 170px 1fr;
+}
+
+@media (max-width:560px) {
+
+  .rows .r,
+  .rows.wide .r {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+/* ---- section footer link ---- */
+.more {
+  margin: 26px 0 0;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+}
+
+.more a {
+  font-weight: 600;
+  border-bottom: 1px solid var(--wash);
+  padding-bottom: 2px;
+}
+
+.more a:hover {
+  border-color: var(--accent);
+}
+
+.more a::after {
+  content: " →";
+}
+
+/* ---- contact ---- */
+.contact p {
+  max-width: 60ch;
+  margin: 0 0 22px;
+  color: var(--ink-2);
+}
+
+.contact .clinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 13.5px;
+}
+
+.contact .clinks a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--faint-2);
+  padding-bottom: 2px;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+
+.contact .clinks a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+footer {
+  border-top: 1px solid var(--faint);
+  padding: 30px 0 56px;
+  font-family: "Red Hat Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--sub);
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  letter-spacing: .02em;
+}
+
+footer a {
+  color: var(--sub);
+  border-bottom: 1px solid transparent;
+}
+
+footer a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rise .7s var(--ease) forwards;
+}
+
+.fade.d1 {
+  animation-delay: .05s;
+}
+
+.fade.d2 {
+  animation-delay: .12s;
+}
+
+.fade.d3 {
+  animation-delay: .19s;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
