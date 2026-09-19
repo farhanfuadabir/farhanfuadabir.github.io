@@ -1,0 +1,92 @@
+/* Blog posts: a light, Google Research-style reading layout.
+   Fonts follow research.google: Google Sans Flex for headings, Google Sans Text for body. */
+:root {
+  --g-grey-900: #202124;
+  --g-grey-800: #3c4043;
+  --g-grey-700: #5f6368;
+  --g-grey-300: #dadce0;
+  --g-grey-100: #f1f3f4;
+  --g-blue: #1a73e8;
+  --g-blue-dark: #174ea6;
+  --display: "Google Sans Flex", "Google Sans", "Product Sans", Roboto, Arial, Helvetica, sans-serif;
+  --text: "Google Sans Text", "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+  --mono: "Roboto Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--g-grey-900);
+  font-family: var(--text);
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: .1px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--g-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--g-blue); outline-offset: 3px; border-radius: 2px; }
+
+/* top bar shared with the rest of the site, restyled light */
+.bar { border-bottom: 1px solid var(--g-grey-300); }
+.bar-in {
+  max-width: 1120px; margin: 0 auto; padding: 14px 24px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--display); font-size: 15px;
+}
+.bar .home { color: var(--g-grey-900); font-weight: 500; }
+.bar nav { display: flex; gap: 22px; }
+.bar nav a { color: var(--g-grey-700); }
+.bar nav a:hover { color: var(--g-grey-900); text-decoration: none; }
+
+.post { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+.crumb { font-family: var(--display); font-size: 14px; color: var(--g-grey-700); margin: 0 0 28px; }
+.crumb a { color: var(--g-grey-700); }
+.crumb span { margin: 0 8px; }
+h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(32px, 4.6vw, 48px); line-height: 1.17; letter-spacing: -.5px;
+  margin: 0 0 22px; text-wrap: balance;
+}
+.byline { font-size: 15px; color: var(--g-grey-700); margin: 0 0 34px; line-height: 1.5; }
+.byline b { color: var(--g-grey-900); font-weight: 500; }
+.post p { margin: 0 0 15px; }
+.post p.lead { font-size: 20px; line-height: 1.55; }
+h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(24px, 3vw, 32px); line-height: 1.25; letter-spacing: -.25px;
+  margin: 44px 0 14px;
+}
+h3 { font-family: var(--display); font-weight: 500; font-size: 20px; margin: 30px 0 10px; }
+.post ul { padding-left: 22px; margin: 0 0 15px; }
+.post li { margin-bottom: 8px; }
+.post strong { font-weight: 500; }
+
+/* figures: wide image, italic grey caption, like research.google */
+figure { margin: 30px 0 36px; }
+figure.wide { width: min(1000px, calc(100vw - 48px)); margin-left: calc(50% - min(500px, 50vw - 24px)); }
+figure img, figure svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+figure img.paper { border: 1px solid var(--g-grey-300); background: #fff; }
+figcaption { font-size: 14px; line-height: 20px; color: var(--g-grey-700); font-style: italic; padding-top: 10px; text-align: center; max-width: 760px; margin: 0 auto; }
+
+/* quick links block */
+.quick { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 30px; }
+.quick a {
+  font-family: var(--display); font-size: 14px; font-weight: 500;
+  border: 1px solid var(--g-grey-300); border-radius: 100px; padding: 8px 16px; color: var(--g-blue);
+}
+.quick a:hover { background: var(--g-grey-100); text-decoration: none; }
+
+/* key numbers strip */
+.numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 22px 0 30px; }
+.numbers div { background: var(--g-grey-100); border-radius: 10px; padding: 16px 18px; }
+.numbers .v { font-family: var(--display); font-size: 34px; line-height: 1.1; font-weight: 400; color: var(--g-grey-900); font-variant-numeric: tabular-nums; }
+.numbers .l { font-size: 13.5px; color: var(--g-grey-700); margin-top: 6px; }
+@media (max-width: 640px) { .numbers { grid-template-columns: 1fr; } }
+
+.ack { border-top: 1px solid var(--g-grey-300); margin-top: 48px; padding-top: 24px; font-size: 15.5px; color: var(--g-grey-800); }
+.ack h2 { font-size: 22px; margin-top: 0; }
+footer.post-foot { max-width: 1120px; margin: 0 auto; padding: 24px; border-top: 1px solid var(--g-grey-300); font-family: var(--display); font-size: 13px; color: var(--g-grey-700); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer.post-foot a { color: var(--g-grey-700); }

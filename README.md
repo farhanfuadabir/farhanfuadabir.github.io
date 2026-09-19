@@ -12,7 +12,10 @@ publications.html   the complete publication list
 projects.html       research and hardware projects, written up
 cv.html             CV as a web page, with the PDF linked
 offline.html        teaching, community, competitions (not linked from home)
-assets/style.css    every page shares this one stylesheet
+blog/               plain-language write-ups of papers (light, Google Research-style layout)
+assets/style.css    every page except blog/ shares this one stylesheet
+assets/blog.css     stylesheet for blog/
+assets/img/blog/    figures used by blog posts
 assets/cv.pdf       CV PDF, linked from the header and cv.html
 assets/img/         profile photo
 .nojekyll           serve raw HTML instead of running Jekyll

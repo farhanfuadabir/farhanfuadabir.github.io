@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://farhanfuadabir.github.io/blog/multimodal-mil-fibroepithelial-tumors.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://farhanfuadabir.github.io/publications.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

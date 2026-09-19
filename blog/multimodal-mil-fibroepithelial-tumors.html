@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#ffffff" />
+<title>Diagnosing fibroepithelial breast tumors at the patient level · Farhan Fuad Abir</title>
+<meta name="author" content="Farhan Fuad Abir" />
+<meta name="description" content="A plain-language summary of our MICCAI 2026 Deep-Breath Workshop paper: a patient-level multimodal multiple instance learning framework that reads all of a patient's breast ultrasound images together with routine clinical variables to separate fibroadenomas from phyllodes tumors." />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Diagnosing fibroepithelial breast tumors at the patient level with multimodal multiple instance learning" />
+<meta property="og:description" content="Reading all of a patient's ultrasound images together with three routine clinical variables reached 0.780 AUC-ROC for fibroadenoma vs. phyllodes tumor, beating either source alone and a heavier neural fusion." />
+<meta property="og:url" content="https://farhanfuadabir.github.io/blog/multimodal-mil-fibroepithelial-tumors.html" />
+<meta property="og:image" content="https://farhanfuadabir.github.io/assets/img/blog/mil-fig1-overview.png" />
+<link rel="canonical" href="https://farhanfuadabir.github.io/blog/multimodal-mil-fibroepithelial-tumors.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/blog.css">
+</head>
+<body>
+
+<div class="bar"><div class="bar-in">
+  <a class="home" href="../index.html">Farhan Fuad Abir</a>
+  <nav aria-label="Sections">
+    <a href="../publications.html">Publications</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../cv.html">CV</a>
+  </nav>
+</div></div>
+
+<main class="post">
+  <p class="crumb"><a href="../index.html">Home</a><span>›</span><a href="../publications.html">Publications</a><span>›</span>Blog</p>
+
+  <h1>Diagnosing fibroepithelial breast tumors at the patient level with multimodal multiple instance learning</h1>
+  <p class="byline">September 19, 2026<br>Posted by <b>Farhan Fuad Abir</b>, PhD Researcher, University of Central Florida</p>
+
+  <p class="lead">Fibroadenomas and phyllodes tumors are two kinds of fibroepithelial breast lesions that look remarkably alike, both in the clinic and on an ultrasound screen. The distinction matters a great deal. A fibroadenoma is benign and is usually just observed. A phyllodes tumor needs complete surgical excision with negative margins, because borderline and malignant cases can recur locally and progress.</p>
+
+  <p>Core needle biopsy, the standard way to settle the question before surgery, is inconclusive in about 15% of patients. When a fibroadenoma cannot be confidently distinguished from a phyllodes tumor, surgeons often excise the lesion to obtain a definitive diagnosis. That means unnecessary surgery for many patients whose lesions were fibroadenomas all along, with poorer cosmetic outcomes, higher healthcare costs and higher morbidity. Ultrasound is noninvasive and widely available, and features such as lesion size and echogenicity have been linked to phyllodes tumors, but the two lesion types overlap so much that visual interpretation alone has limited accuracy.</p>
+
+  <p>In “<a href="https://www.medrxiv.org/content/10.64898/2026.09.07.26362448v1" target="_blank" rel="noopener">Multimodal Multiple Instance Learning for Fibroepithelial Tumor Diagnosis in Breast Ultrasound</a>”, presented at the Deep-Breath Workshop at MICCAI 2026, we describe a framework that makes this diagnosis the way a clinician does: at the level of the patient, reading all of their ultrasound images together with a few routine clinical variables. On a cohort of 688 patients from 14 sites, a simple combination of an ultrasound score and a clinical score reached 0.780 AUC-ROC, improving on either source alone and on a heavier end-to-end neural fusion. To the best of our knowledge, this is the first patient-level multiple instance learning framework for fibroepithelial tumor evaluation in breast ultrasound.</p>
+
+  <div class="quick">
+    <a href="https://www.medrxiv.org/content/10.64898/2026.09.07.26362448v1" target="_blank" rel="noopener">Read the paper (medRxiv)</a>
+    <a href="../publications.html">All publications</a>
+  </div>
+
+  <h2>Reading the way clinicians read</h2>
+  <p>Most deep learning work on this problem classifies one ultrasound image at a time. That is not how a radiologist works. In practice, all the views of a lesion are interpreted together, alongside the patient’s context: their age, the lesion’s size, and other descriptors in the imaging report.</p>
+  <p><strong>Multiple instance learning (MIL)</strong> matches that habit. Each patient becomes a “bag” of ultrasound images with a single diagnostic label attached to the whole bag rather than to each image. The model learns which images in the bag to lean on and produces one score per patient. In our data, a patient’s bag holds a median of 4 images, ranging from a single view up to 56, spanning different acquisition planes and repeated captures of the same lesion.</p>
+
+  <figure class="wide">
+    <img class="paper" src="../assets/img/blog/mil-fig1-overview.png" alt="Diagram of the framework: a bag of ultrasound images is encoded by a frozen ultrasound foundation model and pooled by attention-based MIL into an image score; age, lesion size and echogenicity go through a gradient boosting learner to a clinical score; a logistic score fusion combines the two into the final prediction." width="1075" height="455" loading="lazy">
+    <figcaption>Overview of the framework. A patient’s ultrasound images are encoded by a pretrained ultrasound foundation model and aggregated by attention-based MIL into an image score. Three structured clinical variables are modeled by a gradient boosting learner into a clinical score. A logistic score-fusion model combines the two scores into the final patient-level prediction.</figcaption>
+  </figure>
+
+  <h2>How the model works</h2>
+  <p>The framework has two streams and one small combiner.</p>
+  <ul>
+    <li><strong>Image stream.</strong> Every ultrasound image is passed through a frozen ultrasound foundation model (USFM), which turns it into a fixed 768-number description. Nothing inside the encoder is trained on our cohort, which keeps the number of learned parameters small. A gated attention network then assigns each image a weight, sums the weighted descriptions into one patient representation, and turns it into an image score.</li>
+    <li><strong>Clinical stream.</strong> Three variables that are routinely available before surgery, age, lesion size measured on ultrasound, and echogenicity, go into a gradient boosting learner that produces a clinical score. We use a tree model rather than a neural network here because tree ensembles tend to do well on small tables with a handful of variables.</li>
+    <li><strong>Fusion.</strong> A logistic model with two inputs weighs the image score against the clinical score to give the final probability. This late fusion keeps the model low-capacity and interpretable: one can read off how much each stream is trusted.</li>
+  </ul>
+  <p>One caveat worth stating plainly: the attention weights tell you which <em>views</em> contributed most to a patient’s prediction. They are not a lesion localization map and should not be read as pointing at pixels.</p>
+
+  <h2>Evaluating without leaking</h2>
+  <p>The study is retrospective. We queried the surgical pathology records of 14 hospitals and clinical sites within a single integrated health network, accrued between 2003 and 2024, under an approved IRB protocol with consent waived. Of 700 curated, pathology-confirmed cases, 12 lacked paired ultrasound and clinical data, leaving 688 patients: 409 fibroadenomas and 279 phyllodes tumors (198 benign, 81 borderline or malignant), with 4,063 ultrasound images in total.</p>
+
+  <div class="numbers">
+    <div><div class="v">688</div><div class="l">patients: 409 fibroadenoma, 279 phyllodes tumor</div></div>
+    <div><div class="v">4,063</div><div class="l">ultrasound images, a median of 4 per patient</div></div>
+    <div><div class="v">14</div><div class="l">sites in one health network, 2003–2024</div></div>
+  </div>
+
+  <p>We used stratified, patient-grouped 5-fold cross-validation, so all images from a patient stay in the same fold. Within each fold the cohort is split into inner-training (64%), inner-validation (16%) and outer-test (20%) sets. Every choice that involves selection, early stopping, clinical hyperparameters, fitting the fusion, and picking the operating threshold, is made on inner-validation only. The resulting model is applied to the outer-test patients exactly once. All metrics carry patient-clustered bootstrap 95% confidence intervals, and paired comparisons use a fold-aware bootstrap with Holm correction, with DeLong and clustered McNemar tests as sensitivity checks.</p>
+
+  <h2>Key results</h2>
+  <p>Clinical variables alone turned out to be a strong baseline: gradient boosting on age, lesion size and echogenicity reached 0.747 AUC-ROC, above image-only MIL at 0.699. Fusing the two streams inside a neural network (an MLP) did not improve on clinical evidence alone. The proposed logistic score fusion reached 0.780 AUC-ROC and 0.725 AUC-PR, and its advantage held against every other configuration after correction for multiple comparisons.</p>
+
+  <figure class="wide">
+    <img src="../assets/img/blog/mil-table1-auc.svg" alt="Bar chart of AUC-ROC with 95% confidence intervals: image-only MIL 0.699, clinical-only gradient boosting 0.747, neural fusion 0.745, logistic score fusion 0.780." width="900" height="300" loading="lazy">
+    <figcaption>Ablation on the fibroadenoma-vs-phyllodes task. Logistic score fusion improves on image-only MIL by +0.081 AUC-ROC (95% CI [+0.042, +0.119], p &lt; 0.001), on MLP fusion by +0.035 ([+0.003, +0.067], p = 0.030), and on clinical-only gradient boosting by +0.033 ([+0.013, +0.053], p = 0.001).</figcaption>
+  </figure>
+
+  <p>Because fibroadenomas and phyllodes tumors overlap in both clinical profile and sonographic appearance, the practical value of the image stream is in re-ranking borderline cases that sit near the decision threshold. The model is best viewed as a clinical prior combined with complementary ultrasound evidence, rather than as a replacement for clinical context.</p>
+
+  <h2>Simpler was better</h2>
+  <p>We also asked, at each branch of the design, whether a more elaborate choice would have helped. On a cohort of a few hundred patients, the answer was consistently no.</p>
+  <ul>
+    <li><strong>Patient-level aggregation, not a particular pooler.</strong> Moving from image-level prediction to attention-based MIL raised AUC-ROC from 0.651 to 0.699 (p = 0.030). But every MIL pooling operator we tried, from simple mean pooling to TransMIL and CLAM, landed in a narrow band between 0.656 and 0.699. The gain comes from formulating the problem at the patient level, not from the specific aggregator.</li>
+    <li><strong>Tree models for the clinical table.</strong> Gradient boosting (0.747), XGBoost (0.729) and random forest (0.696) all outperformed logistic regression (0.688) and an MLP (0.678) on the three clinical variables. Differences among the boosting methods were small, so we do not claim gradient boosting is significantly better than the other boosters.</li>
+    <li><strong>Frozen encoders, not fine-tuned ones.</strong> Fine-tuning significantly degraded four of six image encoders (BiomedCLIP, DINOv2, ResNet50 and ViT-B). For USFM it gave a nominal rise from 0.699 to 0.716 that was not statistically significant (p = 0.35). On a cohort this size, fine-tuning a large encoder mostly buys overfitting.</li>
+  </ul>
+
+  <figure class="wide">
+    <img class="paper" src="../assets/img/blog/mil-fig2-roc.png" alt="Two ROC plots. Left: image stream poolers, ABMIL best at 0.699, image-level no-MIL lowest at 0.651. Right: clinical learners, gradient boosting best at 0.747." width="980" height="435" loading="lazy">
+    <figcaption>ROC curves for the image stream (left) and the clinical stream (right), with AUC-ROC and patient-clustered 95% confidence intervals in the legends. Every MIL pooler sits above image-level prediction, and tree-based learners sit above linear and neural ones.</figcaption>
+  </figure>
+
+  <figure class="wide">
+    <img class="paper" src="../assets/img/blog/mil-fig3-encoders.png" alt="Left: paired bars of pretrained vs fine-tuned AUC-ROC for six encoders; fine-tuning lowers four of them. Right: radar plot of eight metrics for the six pretrained encoders with USFM the most balanced." width="1075" height="465" loading="lazy">
+    <figcaption>Image-encoder comparison under patient-level MIL. Left: pretrained versus fine-tuned encoders; hatched bars mark changes that were not significant after Holm correction. Right: the six pretrained encoders across AUC-ROC, AUC-PR, accuracy, F1, sensitivity, specificity, PPV and NPV, with USFM the most balanced.</figcaption>
+  </figure>
+
+  <p>One more check mattered to us. Fibroadenoma patients tend to have slightly more images than phyllodes patients, so could the model simply be counting? A classifier that sees only the number of images per patient reaches just 0.577 AUC-ROC (95% CI [0.535, 0.619]), well below the image stream’s 0.699. And because the attention weights sum to one, the pooled representation is a weighted average that does not grow with the bag.</p>
+
+  <h2>Limitations and what’s next</h2>
+  <p>This is a retrospective study from one health system in one region, so the variation in operators and scanners is confined to that system, and the two-decade accrual window spans several generations of ultrasound equipment. External validation on an independent cohort is still needed before any claim about clinical use. The clinical variables are limited to three; information such as core needle biopsy pathology, which clinicians do have in hand, was not used. And USFM was the only ultrasound-specific foundation model we tested.</p>
+  <p>Next, we plan to expand the framework to larger datasets, add uncertainty estimation so the model can say when it is unsure, and bring in additional modalities such as mammography and histopathology.</p>
+
+  <div class="ack">
+    <h2>Acknowledgements</h2>
+    <p>This work was done with Mahad Ali, M Shifat Hossain, Logan R Holt, Victoria Chamberlain, Tyler Shern, Tolga Ozmen and Laura J Brattain, across the Department of Electrical and Computer Engineering and the Department of Medicine at the University of Central Florida and the Breast Section, Division of Breast Surgery at Mass General Brigham. The study was approved by the Mass General Brigham Institutional Review Board.</p>
+  </div>
+</main>
+
+<footer class="post-foot">
+  <span><a href="../index.html">← Home</a></span>
+  <span>© 2026 Farhan Fuad Abir</span>
+</footer>
+
+</body>
+</html>
